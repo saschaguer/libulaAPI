@@ -1,0 +1,30 @@
+{
+  "name": "libulaapi",
+  "version": "1.0.0",
+  "description": "API for libulaApp",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "log": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Sascha",
+  "license": "ISC",
+  "dependencies": {
+    "@logtail/pino": "^0.5.0",
+    "@supabase/supabase-js": "^2.45.1",
+    "base64-arraybuffer": "^1.0.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-ruid": "^1.1.5",
+    "express-slow-down": "^2.0.3",
+    "express-validator": "^7.2.0",
+    "nodemon": "^3.1.4",
+    "openai": "^4.56.0",
+    "pino": "^9.3.2",
+    "pino-pretty": "^11.2.2",
+    "response-time": "^2.3.2"
+  }
+}
