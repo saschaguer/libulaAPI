@@ -82,7 +82,7 @@ router.post(
                 return;
             }
             // # Step 3 - get threadID #
-            globalLogger.info("---- new Story - getThreadIDOpenAI ----");
+            globalLogger.info("--- new Story - getThreadIDOpenAI ---");
             const thread = await getThreadIDOpenAI();
             if (!thread) {
                 globalLogger.error("new Story - Step 3 get threadID from openAI (getThreadIDOpenAI).");

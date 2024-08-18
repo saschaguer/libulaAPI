@@ -105,15 +105,15 @@ app.use((err, req, res, next) => {
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
 
-        // init supabase client prod / test
-        if (process.env.SUPABASE_USE_PROD === "true") {
-            logger.info("Use Supebase Prod...");
-            supabaseCreateClient(process.env.SUPABASE_URL_PROD, process.env.SUPABASE_ANON_KEY_PROD);
-        }
-        else {
-            logger.info("Use Supebase Test...");
-            supabaseCreateClient(process.env.SUPABASE_URL_TEST, process.env.SUPABASE_ANON_KEY_TEST);
-        }
-
+    // init supabase client prod / test
+    if (process.env.SUPABASE_USE_PROD === "true") {
+        logger.info("Use Supebase Prod...");
+        supabaseCreateClient(process.env.SUPABASE_URL_PROD, process.env.SUPABASE_ANON_KEY_PROD);
+    }
+    else {
+        logger.info("Use Supebase Test...");
+        supabaseCreateClient(process.env.SUPABASE_URL_TEST, process.env.SUPABASE_ANON_KEY_TEST);
+    }
+    console.log(process.env.MODE)
     logger.info(`🚀 Server is running on Port:${PORT}`);
 });

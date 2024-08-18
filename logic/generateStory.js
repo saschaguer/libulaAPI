@@ -39,14 +39,14 @@ const genStory = async (promptData, thread) => {
     genStoryData.characterCountStory = countCharacters(genStoryData.story);
     
     // # Step 4 - generate Suggestions #
-    globalLogger.info("---- genStory callOpenAI suggestions ----");
+    globalLogger.info("--- genStory callOpenAI suggestions ---");
     genStoryData.suggestions = await callOpenAI(genStoryData.thread, promptData.suggestionsUser, promptData.suggestionsSystem);
     if (!genStoryData.suggestions) {
         globalLogger.error(genStoryData.suggestions,"genStory - Step 4 callOpenAI suggestions.");
         return false;
     }
     // # Step 4.1 - convert Suggestions in JSON #
-    globalLogger.info("---- genStory convertSuggestions ----");
+    globalLogger.info("--- genStory convertSuggestions ---");
     genStoryData.suggestions = convertSuggestions(genStoryData.suggestions);
     if (!genStoryData.suggestions) {
         globalLogger.error(genStoryData.suggestions,"genStory - Step 4.1 convertSuggestions");
