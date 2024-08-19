@@ -1,8 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 import { decode } from 'base64-arraybuffer';
+import dotenv from 'dotenv';
 
 import { globalLogger } from '../server.js';
 import appError from './errors.js';
+
+// Load environment variables from .env file
+dotenv.config();
 
 // var for supabase
 let supabase = null;
@@ -166,8 +170,8 @@ const supabaseUploadFile = async (bucket, path, audioBase64) => {
 const supabaseCreateSignedURL = async (bucket, path) => {
 
     try {
-        // expire in 50 years
-        let expiration = 50 * 31556952;
+        // expire in SUPABASE_URL_EXPIRATION years
+        let expiration = process.env.SUPABASE_URL_EXPIRATION * 31556952;
 
         const { data, error } = await supabase
                     .storage

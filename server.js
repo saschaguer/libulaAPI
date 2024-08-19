@@ -114,6 +114,5 @@ app.listen(PORT, () => {
         logger.info("Use Supebase Test...");
         supabaseCreateClient(process.env.SUPABASE_URL_TEST, process.env.SUPABASE_ANON_KEY_TEST);
     }
-    console.log(process.env.MODE)
     logger.info(`🚀 Server is running on Port:${PORT}`);
 });
