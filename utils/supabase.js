@@ -193,5 +193,35 @@ const supabaseCreateSignedURL = async (bucket, path) => {
     }
 
 };
+// delete account
+const supabaseDeleteAccount = async (userID) => {
 
-export { supabaseCreateClient, supabaseAuth, supabaseSelect, supabaseUpdate, supabaseInsert, supabaseUploadFile, supabaseCreateSignedURL }
+    try {
+
+        // create supabase admin client
+        const supabase = createClient(supabaseUrl, process.env.SUPABASE_SERVER_KEY_TEST, {
+            auth: {
+              autoRefreshToken: false,
+              persistSession: false
+            }
+          })
+          
+          // delete account
+          const { data, error } = await supabase.auth.admin.deleteUser(userID);
+
+          if (error) {
+            globalLogger.error(`supabaseDeleteAccount: ${error.message}`);
+            return false;
+        }
+
+        globalLogger.debug(data.signedUrl,"supabaseDeleteAccount");
+
+        return true;
+        
+    } catch (error) {
+        globalLogger.error(error,`supabaseDeleteAccount: ${error.message}`);
+        return false;
+    }
+}
+
+export { supabaseCreateClient, supabaseAuth, supabaseSelect, supabaseUpdate, supabaseInsert, supabaseUploadFile, supabaseCreateSignedURL, supabaseDeleteAccount }

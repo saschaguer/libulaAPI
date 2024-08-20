@@ -9,6 +9,7 @@ import ruid from 'express-ruid';
 import appError from './utils/errors.js';
 import logger from './utils/logger.js';
 import story from './routes/story.js';
+import account from './routes/account.js';
 import { supabaseCreateClient } from './utils/supabase.js';
 
 // Load environment variables from .env file
@@ -78,11 +79,8 @@ app.use(responseTime((req, res, time) => {
 }));
 
 // ## Routes ##
-app.get('/', (req, res) => {
-    res.send('Server is running...');
-});
 app.use("/story",story);
-// app.use("/audio",audio);
+app.use("/account",account);
 
 // ## error handling ##
 // # custom not found error #
