@@ -29,7 +29,7 @@ const storyDataNew = async (params) => {
         globalLogger.debug(storyData.mainCharacter,"storyDataNew - Step1 mainCharacter");
 
         // Step 2 - select storyDescription by storyTypeID
-        storyData.storyDescriptions = await supabaseSelect(params.token, "stories_descriptions",`stories_type_id=eq.${params.storyTypeID}`);
+        storyData.storyDescriptions = await supabaseSelect(params.token, "stories_descriptions",`stories_type_id=eq.${params.storyTypeID}&&language=eq.${params.language}`);
         if (!storyData.storyDescriptions || storyData.storyDescriptions.length === 0) {
             globalLogger.error("storyDataNew - Step 2 select storyDescription by storyTypeID.");
             return false;
@@ -61,10 +61,10 @@ const storyDataNew = async (params) => {
             return false;
         }
         storyData.prompts = storyData.prompts[0]
-        globalLogger.debug(storyData.prompts,"storyDataNew - Step 5 prompts.");
+        //globalLogger.debug(storyData.prompts,"storyDataNew - Step 5 prompts.");
 
         // Step 6 - select storyTemplates by storyTypeID AND ages_id
-        storyData.storyTemplates = await supabaseSelect(params.token, "stories_templates",`stories_type_id=eq.${params.storyTypeID}&&age_id=eq.${storyData.mainCharacter.age_id}`);
+        storyData.storyTemplates = await supabaseSelect(params.token, "stories_templates",`stories_type_id=eq.${params.storyTypeID}&&age_id=eq.${storyData.mainCharacter.age_id}&&language=eq.${params.language}`);
         if (!storyData.storyTemplates || storyData.storyTemplates.length === 0) {
             globalLogger.error("storyDataNew - Step 6 select storyTemplates by storyTypeID AND ages_id.");
             return false;

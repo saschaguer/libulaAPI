@@ -58,6 +58,7 @@ const promptDataContinue = (params, continueStoryData) => {
     // create userPrompt
     promptData.userPrompt = createUserPromptContinue(continueStoryData.prompts.continue_user, continueStoryData.suggestionsTitle);
 
+    globalLogger.debug(promptData.userPrompt,"promptDataNew - User prompt");
 
     return promptData;
 };
@@ -96,7 +97,7 @@ const createUserPromptContinue = (prompt, suggestion) => {
 
 const createMainCharacterGender = ( character, translations ) => {
     let genderType = translations.filter((item) => item['value'] === character.gender_type);
-    return genderType[0].translation;
+    return genderType[0].prompt;
 
 };
 
